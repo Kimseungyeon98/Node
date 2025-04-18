@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    h1 게시글 등록
+
+    form(action="/board/post" method="post")
+    div
+        label(for="title") 제목
+        input#title(type="text" name="title" required placeholder="제목을 입력하세요")
+    div
+        label(for="content") 내용
+        textarea#content(name="content" rows="10" required placeholder="내용을 입력하세요")
+    div 
+        button(type="submit") 등록하기

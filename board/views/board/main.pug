@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  .container
+    h1 게시글 목록
+
+    a.btn(href='/board/post') 글 등록
+
+    .board-list
+      each board in boards
+        .board-item
+          a(href=`/board/${board.id}`)
+            img.board-image(src=board.imageURL alt=board.title)
+        .board-info
+            h2 #{board.title}
+            p #{board.regDate}
+
+    .pagination
+      if isPrevPage
+        a.page-link(href=`/board/main?page=${currPage - 1}`) 이전
+      else
+        span.page-disabled 이전
+
+      each pageNo in pageList
+        if pageNo == currPage
+          span.page-current #{pageNo}
+        else
+          a.page-link(href=`/board/main?page=${pageNo}`) #{pageNo}
+
+      if isNextPage
+        a.page-link(href=`/board/main?page=${currPage + 1}`) 다음
+      else
+        span.page-disabled 다음

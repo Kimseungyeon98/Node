@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    ul
+        each val in members
+            li= 'id: ' + val.id + ', name: ' + val.name
